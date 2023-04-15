@@ -1,6 +1,6 @@
 const { NotImplementedError } = require('../extensions/index.js');
 
-// const { Node } = require('../extensions/list-tree.js');
+const { Node } = require('../extensions/list-tree.js');
 
 /**
 * Implement simple binary search tree according to task description
@@ -8,36 +8,34 @@ const { NotImplementedError } = require('../extensions/index.js');
 */
 class BinarySearchTree {
   constructor() {
-    this._root = null;
+    this.rout = null;
   }
-
   root() {
-    return this._root;
+    return this.rout;
   }
-
   add(data) {
-    const addNode = (currentNode, newNode) => {
-      if (newNode.data < currentNode.data) {
+    const addNode = (currentNode, new_node) => {
+      if (new_node.data < currentNode.data) {
         if (currentNode.leftNode === null) {
-          currentNode.leftNode = newNode;
+          currentNode.leftNode = new_node;
         } else {
-          addNode(currentNode.leftNode, newNode);
+          addNode(currentNode.leftNode, new_node);
         }
       } else {
         if (currentNode.rightNode === null) {
-          currentNode.rightNode = newNode;
+          currentNode.rightNode = new_node;
         } else {
-          addNode(currentNode.rightNode, newNode);
+          addNode(currentNode.rightNode, new_node);
         }
       }
     };
 
-    const newNode = { data, leftNode: null, rightNode: null };
+    const new_node = { data, leftNode: null, rightNode: null };
 
-    if (this._root === null) {
-      this._root = newNode;
+    if (this.rout === null) {
+      this.rout = new_node;
     } else {
-      addNode(this._root, newNode);
+      addNode(this.rout, new_node);
     }
   }
 
@@ -56,9 +54,9 @@ class BinarySearchTree {
       }
     };
 
-    if (this._root === null) return false;
+    if (this.rout === null) return false;
 
-    return hasNode(this._root, data);
+    return hasNode(this.rout, data);
   }
 
   find(data) {
@@ -78,9 +76,9 @@ class BinarySearchTree {
       return currentNode;
     };
 
-    if (this._root === null) return null;
+    if (this.rout === null) return null;
 
-    return findNode(this._root, data);
+    return findNode(this.rout, data);
   }
 
   remove(data) {
@@ -127,7 +125,7 @@ class BinarySearchTree {
       return currentNode;
     };
 
-    this._root = removeNode(this._root, data);
+    this.rout = removeNode(this.rout, data);
   }
 
   min() {
@@ -137,9 +135,9 @@ class BinarySearchTree {
       return minValue(currentNode.leftNode);
     };
 
-    if (this._root === null) return null;
+    if (this.rout === null) return null;
 
-    return minValue(this._root);
+    return minValue(this.rout);
   }
 
   max() {
@@ -149,9 +147,9 @@ class BinarySearchTree {
       return maxValue(currentNode.rightNode);
     };
 
-    if (this._root === null) return null;
+    if (this.rout === null) return null;
 
-    return maxValue(this._root);
+    return maxValue(this.rout);
   }
 }
 
